@@ -29,7 +29,7 @@
         con.Open()
 
         ' Välj data att visa
-        sql = "SELECT * from Personer"
+        sql = "SELECT * from Personer;"
 
         ' Koppla och fyll dataadaptern
         da = New OleDb.OleDbDataAdapter(sql, con)
@@ -55,9 +55,22 @@
 
             ' Visa aktuellt postNr ( svåra varianten ^^ )
             txtPost.Text = postNr + 1
+
+            ' Hantera knappar
+            hanteraKnappar(postNr)
         End If
     End Sub
 
+    Private Sub hanteraKnappar(postNr As Integer)
+
+        ' Hantera enable/disable för knappar
+        btnFirst.Enabled = Not (postNr = 0)
+        btnPrevious.Enabled = Not (postNr = 0)
+
+        btnLast.Enabled = Not (postNr = (recordCount - 1))
+        btnNext.Enabled = Not (postNr = (recordCount - 1))
+
+    End Sub
     Private Sub btnFirst_Click(sender As Object, e As EventArgs) Handles btnFirst.Click
         postNr = 0
         fyllFormular(postNr)
