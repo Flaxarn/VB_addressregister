@@ -1,4 +1,4 @@
-﻿Public Class Form1
+﻿Public Class frmDetalj
     ' Kontakt för databaskopplingar
     Private con As New OleDb.OleDbConnection            ' Connection
     Private ds As New DataSet                           ' Tabeller
@@ -201,5 +201,10 @@
         fyllFormular(postNr)
 
         MsgBox("Borta!")
+    End Sub
+
+    Private Sub btnVisaLista_Click(sender As Object, e As EventArgs) Handles btnVisaLista.Click
+        frmLista.Show()
+        Me.Hide()
     End Sub
 End Class
