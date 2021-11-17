@@ -125,15 +125,49 @@
         Dim cb As New OleDb.OleDbCommandBuilder(da)
         Dim dbRow As DataRow
 
-        dbRow = ds.Tables("Adressbok").Rows(postNr)
+        ' Kontroller om ny post eller befintlig
+        If postNr = -1 Then
+            dbRow = ds.Tables("Adressbok").NewRow
+            dbRow.Item("Skapad") = Now
+        Else
+            dbRow = ds.Tables("Adressbok").Rows(postNr)
+        End If
+
+        ' Tilldela databasraden nya värden
         dbRow.Item("Fornamn") = txtFornamn.Text
         dbRow.Item("Efternamn") = txtEfternamn.Text
         dbRow.Item("Adress") = txtAdress.Text
         dbRow.Item("Ort") = txtOrt.Text
         dbRow.Item("Postnr") = txtPostnr.Text
-        dbRow.Item("Skapad") = lblSkapad.Text
+
+        ' Uppdatera databasadaptern om ny post
+        If postNr = -1 Then
+            ds.Tables("Adressbok").Rows.Add(dbRow)
+            postNr = ds.Tables("Adressbok").Rows.Count - 1
+            recordCount = ds.Tables("Adressbok").Rows.Count
+        End If
 
         ' Uppdatera databasraden
         da.Update(ds, "Adressbok")
+
+        ' Visa posten
+        fyllFormular(postNr)
+    End Sub
+
+    Private Sub btnNy_Click(sender As Object, e As EventArgs) Handles btnNy.Click
+
+        ' Töm formulär
+        txtFornamn.Text = ""
+        txtEfternamn.Text = ""
+        txtAdress.Text = ""
+        txtPostnr.Text = ""
+        txtOrt.Text = ""
+        lblSkapad.Text = ""
+
+        ' Indikera ny post
+        postNr = -1
+
+        ' Släck alla knappar
+        hanteraKnappar(postNr)
     End Sub
 End Class

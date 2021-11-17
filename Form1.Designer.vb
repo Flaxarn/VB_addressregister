@@ -184,14 +184,16 @@ Partial Class Form1
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.btnNy)
         Me.Panel1.Controls.Add(Me.txtPost)
+        Me.Panel1.Controls.Add(Me.btnSpara)
         Me.Panel1.Controls.Add(Me.btnFirst)
         Me.Panel1.Controls.Add(Me.btnLast)
         Me.Panel1.Controls.Add(Me.btnPrevious)
         Me.Panel1.Controls.Add(Me.btnNext)
         Me.Panel1.Location = New System.Drawing.Point(12, 324)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(415, 41)
+        Me.Panel1.Size = New System.Drawing.Size(415, 81)
         Me.Panel1.TabIndex = 16
         '
         'txtPost
@@ -206,7 +208,7 @@ Partial Class Form1
         '
         'btnSpara
         '
-        Me.btnSpara.Location = New System.Drawing.Point(311, 99)
+        Me.btnSpara.Location = New System.Drawing.Point(299, 43)
         Me.btnSpara.Name = "btnSpara"
         Me.btnSpara.Size = New System.Drawing.Size(112, 34)
         Me.btnSpara.TabIndex = 17
@@ -215,20 +217,18 @@ Partial Class Form1
         '
         'btnNy
         '
-        Me.btnNy.Location = New System.Drawing.Point(311, 33)
+        Me.btnNy.Location = New System.Drawing.Point(3, 43)
         Me.btnNy.Name = "btnNy"
         Me.btnNy.Size = New System.Drawing.Size(112, 34)
         Me.btnNy.TabIndex = 18
-        Me.btnNy.Text = "Ny"
+        Me.btnNy.Text = "Lägg till"
         Me.btnNy.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(439, 377)
-        Me.Controls.Add(Me.btnNy)
-        Me.Controls.Add(Me.btnSpara)
+        Me.ClientSize = New System.Drawing.Size(439, 417)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.lblSkapad)
         Me.Controls.Add(Me.Label6)
