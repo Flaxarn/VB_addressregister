@@ -264,7 +264,9 @@ Partial Class frmDetalj
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.Name = "frmDetalj"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Adresser"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
