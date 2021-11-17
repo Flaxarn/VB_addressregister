@@ -76,6 +76,12 @@
 
         btnLast.Enabled = Not (postNr = (recordCount - 1))
         btnNext.Enabled = Not (postNr = (recordCount - 1))
+
+        If postNr = -1 Then
+            btnRadera.Enabled = False
+        Else
+            btnRadera.Enabled = True
+        End If
     End Sub
     Private Sub btnFirst_Click(sender As Object, e As EventArgs) Handles btnFirst.Click
 
@@ -169,5 +175,31 @@
 
         ' Släck alla knappar
         hanteraKnappar(postNr)
+    End Sub
+
+    Private Sub btnRadera_Click(sender As Object, e As EventArgs) Handles btnRadera.Click
+
+        If MsgBox("Vill du radera posten?", MsgBoxStyle.YesNo + MsgBoxStyle.Exclamation, "Adressregister!") = MsgBoxResult.Yes Then
+            raderaPost()
+        End If
+    End Sub
+
+    Private Sub raderaPost()
+
+        Dim cb As New OleDb.OleDbCommandBuilder(da)
+
+        ' Ta bort posten från datasetet och uppdatera dataadaptern
+        ds.Tables("Adressbok").Rows(postNr).Delete()
+        da.Update(ds, "Adressbok")
+
+        recordCount = ds.Tables("Adressbok").Rows.Count
+        If postNr >= recordCount Then
+            postNr = recordCount - 1
+        End If
+
+        ' Visa följande post
+        fyllFormular(postNr)
+
+        MsgBox("Borta!")
     End Sub
 End Class

@@ -39,9 +39,10 @@ Partial Class Form1
         Me.btnNext = New System.Windows.Forms.Button()
         Me.btnLast = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnNy = New System.Windows.Forms.Button()
         Me.txtPost = New System.Windows.Forms.TextBox()
         Me.btnSpara = New System.Windows.Forms.Button()
-        Me.btnNy = New System.Windows.Forms.Button()
+        Me.btnRadera = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -184,6 +185,7 @@ Partial Class Form1
         Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.btnRadera)
         Me.Panel1.Controls.Add(Me.btnNy)
         Me.Panel1.Controls.Add(Me.txtPost)
         Me.Panel1.Controls.Add(Me.btnSpara)
@@ -195,6 +197,15 @@ Partial Class Form1
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(415, 81)
         Me.Panel1.TabIndex = 16
+        '
+        'btnNy
+        '
+        Me.btnNy.Location = New System.Drawing.Point(3, 43)
+        Me.btnNy.Name = "btnNy"
+        Me.btnNy.Size = New System.Drawing.Size(112, 34)
+        Me.btnNy.TabIndex = 18
+        Me.btnNy.Text = "Lägg till"
+        Me.btnNy.UseVisualStyleBackColor = True
         '
         'txtPost
         '
@@ -215,14 +226,14 @@ Partial Class Form1
         Me.btnSpara.Text = "Spara"
         Me.btnSpara.UseVisualStyleBackColor = True
         '
-        'btnNy
+        'btnRadera
         '
-        Me.btnNy.Location = New System.Drawing.Point(3, 43)
-        Me.btnNy.Name = "btnNy"
-        Me.btnNy.Size = New System.Drawing.Size(112, 34)
-        Me.btnNy.TabIndex = 18
-        Me.btnNy.Text = "Lägg till"
-        Me.btnNy.UseVisualStyleBackColor = True
+        Me.btnRadera.Location = New System.Drawing.Point(156, 44)
+        Me.btnRadera.Name = "btnRadera"
+        Me.btnRadera.Size = New System.Drawing.Size(112, 34)
+        Me.btnRadera.TabIndex = 19
+        Me.btnRadera.Text = "Radera"
+        Me.btnRadera.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -271,4 +282,5 @@ Partial Class Form1
     Friend WithEvents txtPost As TextBox
     Friend WithEvents btnSpara As Button
     Friend WithEvents btnNy As Button
+    Friend WithEvents btnRadera As Button
 End Class
