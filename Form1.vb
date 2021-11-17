@@ -115,4 +115,25 @@
             txtPost_Leave(sender, e)
         End If
     End Sub
+
+    Private Sub btnSpara_Click(sender As Object, e As EventArgs) Handles btnSpara.Click
+        saveData()
+    End Sub
+
+    Private Sub saveData()
+
+        Dim cb As New OleDb.OleDbCommandBuilder(da)
+        Dim dbRow As DataRow
+
+        dbRow = ds.Tables("Adressbok").Rows(postNr)
+        dbRow.Item("Fornamn") = txtFornamn.Text
+        dbRow.Item("Efternamn") = txtEfternamn.Text
+        dbRow.Item("Adress") = txtAdress.Text
+        dbRow.Item("Ort") = txtOrt.Text
+        dbRow.Item("Postnr") = txtPostnr.Text
+        dbRow.Item("Skapad") = lblSkapad.Text
+
+        ' Uppdatera databasraden
+        da.Update(ds, "Adressbok")
+    End Sub
 End Class

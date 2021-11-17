@@ -40,6 +40,8 @@ Partial Class Form1
         Me.btnLast = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtPost = New System.Windows.Forms.TextBox()
+        Me.btnSpara = New System.Windows.Forms.Button()
+        Me.btnNy = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -202,11 +204,31 @@ Partial Class Form1
         Me.txtPost.Text = "txtPost"
         Me.txtPost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'btnSpara
+        '
+        Me.btnSpara.Location = New System.Drawing.Point(311, 99)
+        Me.btnSpara.Name = "btnSpara"
+        Me.btnSpara.Size = New System.Drawing.Size(112, 34)
+        Me.btnSpara.TabIndex = 17
+        Me.btnSpara.Text = "Spara"
+        Me.btnSpara.UseVisualStyleBackColor = True
+        '
+        'btnNy
+        '
+        Me.btnNy.Location = New System.Drawing.Point(311, 33)
+        Me.btnNy.Name = "btnNy"
+        Me.btnNy.Size = New System.Drawing.Size(112, 34)
+        Me.btnNy.TabIndex = 18
+        Me.btnNy.Text = "Ny"
+        Me.btnNy.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(439, 377)
+        Me.Controls.Add(Me.btnNy)
+        Me.Controls.Add(Me.btnSpara)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.lblSkapad)
         Me.Controls.Add(Me.Label6)
@@ -247,4 +269,6 @@ Partial Class Form1
     Friend WithEvents btnLast As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents txtPost As TextBox
+    Friend WithEvents btnSpara As Button
+    Friend WithEvents btnNy As Button
 End Class
