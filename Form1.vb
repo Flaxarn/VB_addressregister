@@ -1,6 +1,6 @@
 ﻿Public Class Form1
     ' Kontakt för databaskopplingar
-    Private con As New OleDb.OleDbConnection          ' Connection
+    Private con As New OleDb.OleDbConnection            ' Connection
     Private ds As New DataSet                           ' Tabeller
     Private da As New OleDb.OleDbDataAdapter            ' Uppdatera tabeller
 
@@ -38,27 +38,34 @@
 
         ' Räkna antal poster
         recordCount = ds.Tables("Adressbok").Rows.Count
+        txtPost.MaxLength = Math.Ceiling(Math.Log10(recordCount)) ' Ändra längd på inmatning av textruta efter hur många poster som finns
         postNr = 0
         fyllFormular(postNr)
 
     End Sub
 
     Private Sub fyllFormular(postNr As Integer)
-        If postNr >= 0 And postNr < recordCount Then
-            ' Fyll formulär
-            txtFornamn.Text = ds.Tables("Adressbok").Rows(postNr)("Fornamn")
-            txtEfternamn.Text = ds.Tables("Adressbok").Rows(postNr)("Efternamn")
-            txtAdress.Text = ds.Tables("Adressbok").Rows(postNr)("Adress")
-            txtPostnr.Text = ds.Tables("Adressbok").Rows(postNr)("Postnr")
-            txtOrt.Text = ds.Tables("Adressbok").Rows(postNr)("Ort")
-            lblSkapad.Text = ds.Tables("Adressbok").Rows(postNr)("Skapad")
 
-            ' Visa aktuellt postNr ( svåra varianten ^^ )
-            txtPost.Text = postNr + 1
-
-            ' Hantera knappar
-            hanteraKnappar(postNr)
+        ' Hantera felaktiga postinmatningar
+        If postNr > recordCount - 1 Then
+            postNr = recordCount - 1
+        ElseIf postNr < 0 Then
+            postNr = 0
         End If
+
+        ' Fyll formulär
+        txtFornamn.Text = ds.Tables("Adressbok").Rows(postNr)("Fornamn")
+        txtEfternamn.Text = ds.Tables("Adressbok").Rows(postNr)("Efternamn")
+        txtAdress.Text = ds.Tables("Adressbok").Rows(postNr)("Adress")
+        txtPostnr.Text = ds.Tables("Adressbok").Rows(postNr)("Postnr")
+        txtOrt.Text = ds.Tables("Adressbok").Rows(postNr)("Ort")
+        lblSkapad.Text = ds.Tables("Adressbok").Rows(postNr)("Skapad")
+
+        ' Visa aktuellt postNr ( svåra varianten ^^ )
+        txtPost.Text = postNr + 1
+
+        ' Hantera knappar
+        hanteraKnappar(postNr)
     End Sub
 
     Private Sub hanteraKnappar(postNr As Integer)
@@ -69,29 +76,43 @@
 
         btnLast.Enabled = Not (postNr = (recordCount - 1))
         btnNext.Enabled = Not (postNr = (recordCount - 1))
-
     End Sub
     Private Sub btnFirst_Click(sender As Object, e As EventArgs) Handles btnFirst.Click
+
         postNr = 0
         fyllFormular(postNr)
     End Sub
 
     Private Sub btnPrevious_Click(sender As Object, e As EventArgs) Handles btnPrevious.Click
-        If postNr > 0 Then
-            postNr = postNr - 1
-            fyllFormular(postNr)
-        End If
+
+        postNr = postNr - 1
+        fyllFormular(postNr)
     End Sub
 
     Private Sub btnNext_Click(sender As Object, e As EventArgs) Handles btnNext.Click
-        If postNr < recordCount - 1 Then
-            postNr = postNr + 1
-            fyllFormular(postNr)
-        End If
+
+        postNr = postNr + 1
+        fyllFormular(postNr)
     End Sub
 
     Private Sub btnLast_Click(sender As Object, e As EventArgs) Handles btnLast.Click
+
         postNr = recordCount - 1
         fyllFormular(postNr)
+    End Sub
+
+    Private Sub txtPost_Leave(sender As Object, e As EventArgs) Handles txtPost.Leave
+
+        Dim input As Integer
+        input = Val(txtPost.Text)
+        postNr = input - 1
+        fyllFormular(postNr)
+    End Sub
+
+    Private Sub txtPost_KeyDown(sender As Object, e As KeyEventArgs) Handles txtPost.KeyDown
+
+        If e.KeyCode = Keys.Enter Then
+            txtPost_Leave(sender, e)
+        End If
     End Sub
 End Class

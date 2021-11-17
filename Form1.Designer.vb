@@ -195,10 +195,12 @@ Partial Class Form1
         'txtPost
         '
         Me.txtPost.Location = New System.Drawing.Point(176, 4)
+        Me.txtPost.MaxLength = 7
         Me.txtPost.Name = "txtPost"
         Me.txtPost.Size = New System.Drawing.Size(63, 31)
-        Me.txtPost.TabIndex = 16
+        Me.txtPost.TabIndex = 1
         Me.txtPost.Text = "txtPost"
+        Me.txtPost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Form1
         '
