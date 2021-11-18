@@ -27,8 +27,8 @@ Partial Class frmLista
         Me.colFornamn = New System.Windows.Forms.ColumnHeader()
         Me.colEfternamn = New System.Windows.Forms.ColumnHeader()
         Me.colAdress = New System.Windows.Forms.ColumnHeader()
-        Me.colOrt = New System.Windows.Forms.ColumnHeader()
         Me.colPostnr = New System.Windows.Forms.ColumnHeader()
+        Me.colOrt = New System.Windows.Forms.ColumnHeader()
         Me.colSkapad = New System.Windows.Forms.ColumnHeader()
         Me.SuspendLayout()
         '
@@ -68,17 +68,17 @@ Partial Class frmLista
         Me.colAdress.Text = "Adress"
         Me.colAdress.Width = 100
         '
-        'colOrt
-        '
-        Me.colOrt.DisplayIndex = 4
-        Me.colOrt.Text = "Ort"
-        Me.colOrt.Width = 100
-        '
         'colPostnr
         '
         Me.colPostnr.DisplayIndex = 5
         Me.colPostnr.Text = "PostNR"
         Me.colPostnr.Width = 100
+        '
+        'colOrt
+        '
+        Me.colOrt.DisplayIndex = 4
+        Me.colOrt.Text = "Ort"
+        Me.colOrt.Width = 100
         '
         'colSkapad
         '

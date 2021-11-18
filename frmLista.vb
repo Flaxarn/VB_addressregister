@@ -19,4 +19,14 @@
             itm.SubItems.Add(ds.Tables("Adressbok").Rows(i)("Skapad"))
         Next
     End Sub
+
+    Private Sub lvwAdresser_DoubleClick(sender As Object, e As EventArgs) Handles lvwAdresser.DoubleClick
+
+        Dim rad As Integer = lvwAdresser.SelectedIndices(0)
+
+        frmDetalj.fyllFormular(rad)
+
+        ' Stäng listan
+        Me.Close()
+    End Sub
 End Class
